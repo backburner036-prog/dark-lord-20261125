@@ -37,6 +37,9 @@ def main():
     check_len(TEXT)
     check_words(TEXT)
     save_line(OUT, TEXT)
+    saved = OUT.read_text(encoding="utf-8")
+    assert saved == TEXT, "round-trip mismatch"
+    print(f"wrote {len(TEXT)} chars, {len(TEXT.split())} words to {OUT}")
 
 
 if __name__ == "__main__":
